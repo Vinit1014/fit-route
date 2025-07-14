@@ -1,69 +1,70 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## FitRoute Lite
 
-Currently, two official plugins are available:
+A lightweight, real-time route tracking app built with React, TypeScript, and TailwindCSS — powered by native Web APIs for geolocation, network awareness, and device wake-locks. Ideal for runners, cyclists, or anyone who wants to track movement without relying on third-party mapping libraries.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Live Demo
 
-## Expanding the ESLint configuration
+[🔗 Visit the deployed app](https://your-vercel-url.vercel.app)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Features
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+*  **Real-time location tracking** using the **Geolocation API**
+*  **Prevents screen from sleeping** while tracking using the **Wake Lock API**
+*  **Detects network quality (2G/3G/4G)** and warns about offline mode using the **Network Information API**
+*  **Canvas-based route visualization** — plots your movement path live
+*  Fully client-side, no backend or third-party APIs involved
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+## Web APIs Used
+
+| Web API                     | Purpose                                              |
+| --------------------------- | ---------------------------------------------------- |
+| **Geolocation API**         | Tracks user location as they move                    |
+| **Wake Lock API**           | Keeps screen active while tracking is running        |
+| **Network Information API** | Detects online/offline state and connection type     |
+| **Canvas API**              | Renders a live visual path from your GPS coordinates |
+
+> ⚠️ *The Background Tasks API is still experimental and not fully supported. As a fallback, the Wake Lock API is used to simulate persistent behavior during location tracking.*
+
+---
+
+## Tech Stack
+
+* [React + Vite + TypeScript](https://vitejs.dev/)
+* [Tailwind CSS](https://tailwindcss.com/)
+* Custom React Hooks (`useGeoTracker`, `useWakeLock`, `useNetworkStatus`)
+* HTML Canvas API for drawing the route
+
+---
+
+## How to Run Locally
+
+```bash
+git clone https://github.com/your-username/fitroute-lite.git
+cd fitroute-lite
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+##  Folder Structure
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+src/
+├── App.tsx
+├── components/
+│   └── RouteCanvas.tsx
+│   └── Tracker.tsx
+├── hooks/
+│   ├── useGeoTracker.ts
+│   ├── useNetworkStatus.ts
+│   └── useWakeLock.ts
+```
+
+---
+
