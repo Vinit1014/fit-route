@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useGeoTracker } from "../hooks/useGeoTracker";
 import { useNetworkStatus } from "../hooks/useNetworkStatus";
 import { useWakeLock } from "../hooks/useWakeLock";
+import RouteCanvas from '../components/RouteCanvas';
 
 export default function App() {
   const [tracking, setTracking] = useState(false);
@@ -42,6 +43,8 @@ export default function App() {
           </li>
         ))}
       </ul>
+
+      <RouteCanvas positions={positions}/>
     </div>
   );
 }
