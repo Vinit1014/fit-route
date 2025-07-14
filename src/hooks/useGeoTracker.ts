@@ -3,11 +3,12 @@ import { useEffect, useState } from "react";
 export function useGeoTracker(startTracking: boolean) {
   const [positions, setPositions] = useState<GeolocationPosition[]>([]);
   const [error, setError] = useState<string | null>(null);
-  const [watchId, setWatchId] = useState<number | null>(null);
 
   useEffect(() => {
+    let watchId: number | null = null;
+
     if (startTracking && "geolocation" in navigator) {
-      const id = navigator.geolocation.watchPosition(
+      watchId = navigator.geolocation.watchPosition(
         (pos) => {
           setPositions((prev) => [...prev, pos]);
         },
@@ -18,12 +19,12 @@ export function useGeoTracker(startTracking: boolean) {
           timeout: 5000,
         }
       );
-      setWatchId(id);
     }
 
     return () => {
       if (watchId !== null) {
         navigator.geolocation.clearWatch(watchId);
+        console.log("Tracking stopped & watch cleared");
       }
     };
   }, [startTracking]);
