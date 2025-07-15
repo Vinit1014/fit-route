@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 export function useGeoTracker(startTracking: boolean) {
   const [positions, setPositions] = useState<GeolocationPosition[]>([]);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<GeolocationPositionError | null | string>(null);
 
   useEffect(() => {
     let watchId: number | null = null;
