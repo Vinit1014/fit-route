@@ -5,7 +5,7 @@ A lightweight, real-time route tracking app built with React, TypeScript, and Ta
 
 ### Live Demo
 
-[🔗 Visit the deployed app](https://your-vercel-url.vercel.app)
+[🔗 Visit the deployed app](https://fit-route.vercel.app/)
 
 ---
 
