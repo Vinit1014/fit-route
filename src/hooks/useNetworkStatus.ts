@@ -5,8 +5,9 @@ export function useNetworkStatus() {
   const [isOnline, setIsOnline] = useState<boolean>(navigator.onLine);
 
   useEffect(() => {
-    const connection = (navigator as any).connection || (navigator as any).mozConnection || (navigator as any).webkitConnection;
-
+    const connection = (navigator as any).connection || (navigator as any).webkitConnection;
+    console.log("Connection is ", connection);
+    
     const updateNetworkInfo = () => {
       if (connection && connection.effectiveType) {
         setNetworkType(connection.effectiveType);
@@ -14,7 +15,7 @@ export function useNetworkStatus() {
       setIsOnline(navigator.onLine);
     };
 
-    updateNetworkInfo(); // initial set
+    updateNetworkInfo();
 
     window.addEventListener('online', updateNetworkInfo);
     window.addEventListener('offline', updateNetworkInfo);
