@@ -26,7 +26,7 @@ export default function RouteCanvas({ positions }: RouteCanvasProps) {
     const canvas = canvasRef.current
     if (!canvas || positions.length < 1) return
 
-    const ctx = canvas.getContext("2d")
+    const ctx = canvas.getContext("2d") //get the context of it
     if (!ctx) return
 
     const container = canvas.parentElement

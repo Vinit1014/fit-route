@@ -13,7 +13,6 @@ export default function Tracker() {
 
   return (
     <div className="space-y-6">
-      {/* Control Panel */}
       <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <button
@@ -30,7 +29,6 @@ export default function Tracker() {
             {tracking ? "🛑 Stop Tracking" : "Start Tracking"}
           </button>
 
-          {/* Network Status */}
           <div className="flex items-center gap-2 bg-gray-50 rounded-lg px-4 py-2">
             <div className={`w-3 h-3 rounded-full ${isOnline ? "bg-green-500" : "bg-red-500"}`}></div>
             <span className="text-sm font-medium">
@@ -61,7 +59,6 @@ export default function Tracker() {
         )}
       </div>
 
-      {/* Route Visualization */}
       <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-xl font-bold text-gray-800">📍 Your Route</h2>
