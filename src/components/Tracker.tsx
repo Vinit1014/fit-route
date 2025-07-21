@@ -52,7 +52,6 @@ export default function Tracker() {
         {error && (
           <div className="mt-4 p-4 bg-gradient-to-r from-red-100 to-pink-100 border border-red-200 rounded-xl">
             <div className="flex items-center gap-2">
-              <span className="text-2xl">❌</span>
               <p className="text-red-700 font-medium">{error}</p>
             </div>
           </div>
